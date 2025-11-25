@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Maritime Dark Ocean Theme */
+    --background: 215 45% 8%;
+    --foreground: 195 100% 95%;
+
+    --card: 215 40% 12%;
+    --card-foreground: 195 100% 95%;
+
+    --popover: 215 45% 10%;
+    --popover-foreground: 195 100% 95%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 215 45% 8%;
+
+    --secondary: 215 35% 18%;
+    --secondary-foreground: 195 100% 95%;
+
+    --muted: 215 30% 15%;
+    --muted-foreground: 195 20% 65%;
+
+    --accent: 180 100% 50%;
+    --accent-foreground: 215 45% 8%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 195 100% 95%;
+
+    --border: 215 30% 20%;
+    --input: 215 30% 18%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Maritime specific colors */
+    --ocean-deep: 215 50% 6%;
+    --ocean-surface: 215 45% 12%;
+    --neon-cyan: 195 100% 50%;
+    --neon-blue: 210 100% 55%;
+    --wave-light: 195 80% 65%;
+    --ship-metal: 220 15% 35%;
+    --alert-red: 0 85% 60%;
+    --success-green: 145 80% 50%;
+
+    /* Gradients */
+    --gradient-ocean: linear-gradient(180deg, hsl(215 50% 6%), hsl(215 45% 12%));
+    --gradient-neon: linear-gradient(135deg, hsl(195 100% 50%), hsl(210 100% 55%));
+    --gradient-wave: linear-gradient(90deg, hsl(195 100% 50% / 0.1), hsl(210 100% 55% / 0.2), hsl(195 100% 50% / 0.1));
+
+    /* Shadows & Effects */
+    --shadow-neon: 0 0 20px hsl(195 100% 50% / 0.3);
+    --shadow-deep: 0 8px 32px hsl(215 50% 6% / 0.8);
+    --glow-cyan: 0 0 30px hsl(195 100% 50% / 0.5);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Same as root for consistent dark theme */
+    --background: 215 45% 8%;
+    --foreground: 195 100% 95%;
+    --card: 215 40% 12%;
+    --card-foreground: 195 100% 95%;
+    --popover: 215 45% 10%;
+    --popover-foreground: 195 100% 95%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 215 45% 8%;
+    --secondary: 215 35% 18%;
+    --secondary-foreground: 195 100% 95%;
+    --muted: 215 30% 15%;
+    --muted-foreground: 195 20% 65%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 215 45% 8%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 195 100% 95%;
+    --border: 215 30% 20%;
+    --input: 215 30% 18%;
+    --ring: 195 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
