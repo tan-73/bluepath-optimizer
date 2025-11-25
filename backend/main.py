@@ -25,10 +25,17 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware
+# CORS middleware - Updated for production deployment
+# Allow localhost for development + Vercel domains for production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:8080",
+        "http://localhost:5173",
+        "https://*.vercel.app",  # Vercel preview deployments
+        "https://bluepath-optimizer.vercel.app",  # Production domain (update this with your actual domain)
+        "*"  # Remove this in production after testing, keep only specific domains
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -9,9 +9,19 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import os
 
+# Get database URL from environment, default to SQLite for development
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./bluepath.db")
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {})
+# Fix for Render PostgreSQL: converts postgres:// to postgresql://
+# Render provides DATABASE_URL with postgres:// but SQLAlchemy requires postgresql://
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+# Create engine with appropriate connection args based on database type
+engine = create_engine(
+    DATABASE_URL, 
+    connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
